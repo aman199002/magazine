@@ -1,0 +1,22 @@
+h1 Listing magazines
+
+table.table
+  thead
+    tr
+      th Name
+      th Description
+      th Articles
+      th Comments(Top Level)
+      th
+
+  tbody
+    - @magazines.each do |magazine|
+      tr
+        td = magazine.name
+        td = magazine.description        
+        td = magazine.articles.count
+        td = magazine.articles.map(&:root_comments).flatten.count
+        td = link_to 'Show', magazine
+br
+
+= link_to 'New Magazine', new_magazine_path

@@ -1,0 +1,27 @@
+/h6 child partial
+- if comment.children.present?
+	  - comment.children.each do |child_comment|
+	  		.row			  
+			  .col-md-offset-1.col-md-2
+			  	= child_comment.user.name
+			  .col-md-6
+				= child_comment.body
+				= child_comment.id
+			  .col-md-2
+		  		= link_to "Comments #{child_comment.children.count}","#child_comments_#{child_comment.id}", data: {toggle: 'collapse'}
+			  - if child_comment.children.blank?
+				  .col-md-1
+				  	= link_to comment_path(child_comment), method: 'delete' do
+				  	  |Delete
+		  	.row.collapse id="child_comments_#{child_comment.id}"
+		  		.col-md-offset-2
+		  			= render partial: 'child_comments', locals: {comment: child_comment}	
+
+br
+.row
+	= form_tag create_child_comment_path(comment.id) do
+	  .col-md-offset-2.col-md-6
+		= text_area_tag :comment, nil, placeholder: 'Comment here', rows: 2, cols: 10, class: 'col-md-12'
+	  .col-md-2		
+		= submit_tag 'Add'
+br

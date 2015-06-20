@@ -1,0 +1,33 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @magazine.name
+p
+  strong Description:
+  = @magazine.description
+
+= link_to 'Edit', edit_magazine_path(@magazine)
+'|
+= link_to 'Back', magazines_path
+
+br
+
+h4 Articles
+
+table.table
+  thead
+    tr
+      th Title
+      th Body
+      /th Magazine
+      th
+
+  tbody
+
+	- @magazine.articles.each do |article|
+	      tr
+	        td = article.title
+	        td = article.body
+	        /td = article.magazine_id
+	        td = link_to 'Show', article

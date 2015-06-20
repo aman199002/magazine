@@ -1,0 +1,18 @@
+= form_tag '/auth/user/callback' do |f|
+  h1 Create an Account
+  .row
+  	.col-md-2
+      = label_tag "Email"
+    .col-md-6
+  		= text_field_tag :auth_key
+  br
+  .row
+    .col-md-2
+      = label_tag "Password"
+  	.col-md-6
+  		= password_field_tag :password 
+  /= password_field_tag :password_confirmation 
+  br
+  .row
+  	.col-md-offset-2.col-md-6
+  		= submit_tag "Sign in"
