@@ -29,6 +29,9 @@ gem "twitter-bootstrap-rails"
 gem "slim-rails"
 gem "omniauth-identity"
 gem 'acts_as_commentable_with_threading'
+gem 'heroku'
+
+gem 'pg', group: 'production'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
