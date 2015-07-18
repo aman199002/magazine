@@ -21,7 +21,7 @@ p
 		= comment.body
 	  .col-md-2
 	  	= link_to "Comments #{comment.children.count}","#child_comments_#{comment.id}", data: {toggle: 'collapse'}
-	  - if comment.children.blank?
+	  - if comment.children.blank? && comment.user == current_user
 		  .col-md-2
 		  	= link_to comment_path(comment), method: 'delete' do
 		  	  |Delete

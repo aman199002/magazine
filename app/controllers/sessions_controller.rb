@@ -11,13 +11,16 @@ class SessionsController < ApplicationController
     # raise request.env["omniauth.auth"].to_yaml
     auth_hash = request.env['omniauth.auth']
 	session[:user_email] = auth_hash['info']['email']
-    redirect_to root_path
+    redirect_to root_path, notice: 'Logged in'
   end
 
-  def failure
-  	session[:user_email] = nil
+  def failure  	
     redirect_to login_path
   end  
+
+  def destroy  	
+  	session[:user_email] = nil if current_user
+  end	
 
   	
 end
